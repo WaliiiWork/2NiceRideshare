@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+    <style>
+        .request-ride-section {
+            padding: 60px 0;
+        }
+
+        .request-ride-section h1 {
+            color: #030e4e;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .request-ride-section p {
+            color: #666;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .request-form {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(3, 14, 78, 0.1);
+            border-top: 4px solid #f79f20;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            color: #030e4e;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0px 15px;
+            border: 2px solid #e1e1e1;
+            border-radius: 8px;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            border-color: #f79f20;
+            box-shadow: 0 0 0 0.2rem rgba(247, 159, 32, 0.15);
+            outline: none;
+        }
+
+        textarea.form-control {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .btn-primary {
+            background-color: #f79f20;
+            color: #fff;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-primary:hover {
+            background-color: #030e4e;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(247, 159, 32, 0.3);
+        }
+
+        /* Add a subtle orange glow to inputs on hover */
+        .form-control:hover {
+            border-color: rgba(247, 159, 32, 0.5);
+        }
+
+        @media (max-width: 768px) {
+            .request-ride-section {
+                padding: 40px 0;
+            }
+
+            .request-form {
+                padding: 25px;
+                margin: 0 15px;
+            }
+
+            .request-ride-section h1 {
+                font-size: 2rem;
+            }
+
+            .form-group {
+                margin-bottom: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .request-ride-section h1 {
+                font-size: 1.8rem;
+            }
+
+            .request-form {
+                padding: 20px;
+            }
+
+            .btn-primary {
+                padding: 10px 20px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="top-section">
+        <div class="container">
+            <div class="right">
+                <a href="tel:+1 431-334-2841"><i class="fa-solid fa-phone"></i> +1 431-334-2841</a>
+                <a class="ml-4" href="mailto:info@2niceride.com"><i class="fa-solid fa-envelope"></i>
+                    info@2niceride.com</a>
+            </div>
+            <div class="left">
+                <a
+                    href="https://www.facebook.com/people/2-Nice-Rideshare-Carpooling-Transport-Services-Inc/61565896294744/"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a class="login-btn" href="login.html">Login <i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #fff;">
+    <div class="container">
+        <!-- Logo on the left -->
+        <a class="navbar-brand" href="index.html">
+            <img src="Images/logo.png" width="150" height="120" alt="2Nice Ride Logo" loading="lazy">
+        </a>
+
+        <!-- Toggler button for smaller screens -->
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- Navigation links aligned to the right -->
+        <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item mx-1">
+                    <a class="nav-link" href="index.html">Home</a>
+                </li>
+                <li class="nav-item mx-1">
+                    <a class="nav-link" href="about.html">About Us</a>
+                </li>
+                <li class="nav-item mx-1">
+                    <a class="nav-link" href="choose.html">Post a Trip</a>
+                </li>
+                <li class="nav-item mx-1">
+                    <a class="nav-link" href="Find-ride.html">Find a Ride</a>
+                </li>
+                <li class="nav-item mx-1">
+                    <a class="nav-link" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    </nav>
+
+    <section class="request-ride-section">
+        <div class="container">
+            <h1>Post a request</h1>
+            <p>Get notified when new trips match your travel needs</p>
+            <form class="request-form">
+                <div class="form-group">
+                    <label for="origin">Origin</label>
+                    <input type="text" id="origin" placeholder="From" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="destination">Destination</label>
+                    <input type="text" id="destination" placeholder="To" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="leaving">Leaving</label>
+                    <input type="date" id="leaving" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label for="seats">Seats required</label>
+                    <select id="seats" class="form-control">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="description">Description</label>
+                    <textarea id="description"
+                        placeholder="Tell drivers about your ride (this helps to get accepted on trips)"
+                        class="form-control"></textarea>
+                </div>
+                <button type="submit" class="btn btn-primary">Post request</button>
+            </form>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <div class="footer-logo">
+                        <img src="Images/logo.png" alt="2Nice Ride Logo">
+                    </div>
+                    <p class="company-desc">Experience unparalleled transportation solutions in Canada with 2-Nice
+                        Rideshare &
+                        Carpooling Transport Services Inc. We specialize in safe and efficient taxi services for both
+                        short and
+                        long-distance rides.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Post a trip</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Find a ride</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Chauffeur Service</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Airport Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hotel Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> City to City Ride</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Railway Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>635 St. James Street, Polo Park,<br>Winnipeg, MB R3G 3R4, Canada</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+14313342841">+1 431-334-2841</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@2niceride.com">info@2niceride.com</a>
+                        </li>
+                    </ul>
+                    <div class="app-downloads">
+                        <a href="#" class="app-btn">
+                            <img src="Images/android-icon.png" alt="Get it on Google Play">
+                        </a>
+                        <a href="#" class="app-btn">
+                            <img src="Images/iosapp-icon.png" alt="Download on App Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>© 2024 2-Nice Rideshare & Carpooling Transport Services Inc. All Rights Reserved.</p>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="#">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a href="#">User Agreement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

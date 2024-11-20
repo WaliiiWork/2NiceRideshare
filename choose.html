@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style> 
+        :root {
+            --primary-color: #030e4e;
+            --secondary-color: #f79f20;
+        }
+
+        body {
+            background-color: #fff;
+            min-height: 100vh;
+            color: var(--primary-color);
+            font-family: 'Proxima Soft', sans-serif;
+        }
+
+        .main-container {
+            padding: 5rem 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 5rem;
+            position: relative;
+        }
+
+        .header h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 1rem;
+        }
+
+        .choice-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+            padding: 2rem;
+        }
+
+        .choice-option {
+            position: relative;
+            border: 1px solid rgba(3, 14, 78, 0.1);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            overflow: hidden;
+            background-color: #fff;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+
+        .choice-option:hover {
+            transform: scale(1.02);
+            border-color: var(--secondary-color);
+        }
+
+        .choice-icon {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .driver-option .choice-icon,
+        .rider-option .choice-icon {
+            color: var(--secondary-color);
+        }
+
+        .choice-title {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            position: relative;
+            color: var(--primary-color);
+        }
+
+        .choice-description {
+            color: #666;
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            margin-bottom: auto;
+        }
+
+        .arrow-icon {
+            position: absolute;
+            right: 2rem;
+            bottom: 2rem;
+            font-size: 1.5rem;
+            opacity: 0;
+            transition: all 0.3s ease;
+            color: var(--secondary-color);
+        }
+
+        .choice-option:hover .arrow-icon {
+            opacity: 1;
+            transform: translateX(10px);
+        }
+
+        @media (max-width: 768px) {
+            .choice-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .header h1 {
+                font-size: 2.5rem;
+            }
+        }
+
+        .choice-btn {
+            text-decoration: none;
+            background-color: var(--secondary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .choice-btn i{
+            margin-left: 0.7rem;
+        }
+
+        .choice-btn:hover {
+            background-color: var(--primary-color);
+            text-decoration: none;
+            color: #fff;
+            transform: translateY(-2px);
+        }
+
+        .choice-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Choose Your Journey</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <h1>Choose Your Journey Mode</h1>
+        </div>
+
+        <div class="choice-grid">
+            <div class="choice-option driver-option">
+                <div class="choice-content">
+                    <div class="choice-icon">
+                        <i class="fa-solid fa-car"></i>
+                    </div>
+                    <h2 class="choice-title">Drive & Earn</h2>
+                    <p class="choice-description">Take control of your schedule. Share your ride and make money while helping others reach their destination.</p>
+                    <a href="rules.html" class="choice-btn">Become a Driver<i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+
+            <div class="choice-option rider-option">
+                <div class="choice-content">
+                    <div class="choice-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h2 class="choice-title">Find a Ride</h2>
+                    <p class="choice-description">Book your next journey with confidence. Connect with verified drivers and travel safely.</p>
+                    <a href="request-ride.html" class="choice-btn">Book a Ride <i class="fas fa-arrow-right"></i></a>
+                </div>  
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

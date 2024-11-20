@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+      integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .rules-container {
+            max-width: 1200px;
+            margin: 50px auto;
+            padding: 40px 20px;
+        }
+
+        .rules-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .rules-header h1 {
+            color: #030e4e;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .rules-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: #f79f20;
+            border-radius: 2px;
+        }
+
+        .rules-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .rule-card {
+            background: #fff;
+            border-radius: 20px;
+            border: 2px solid #f79f20;
+            cursor: pointer;
+            padding: 30px;
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .rule-card:hover {
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transform: translateY(-10px);
+        }
+
+        .rule-icon {
+            width: 80px;
+            height: 80px;
+            background: #f79f20;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            transition: all 0.3s ease;
+        }
+
+        .rule-card:hover .rule-icon {
+            background: #f79f20;
+        }
+
+        .rule-icon i {
+            font-size: 32px;
+            color: #fff;
+        }
+
+        .rule-title {
+            color: #f79f20;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .rule-description {
+            color: #666;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .rules-agreement {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+            background: rgba(247, 159, 32, 0.1);
+            border-radius: 10px;
+        }
+
+        .agreement-checkbox {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .agreement-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .agreement-text {
+            color: #030e4e;
+            font-weight: 500;
+        }
+
+        .post-trip-btn {
+            background: #f79f20;
+            color: #fff;
+            border: none;
+            padding: 15px 40px;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .post-trip-btn:hover {
+            background: #030e4e;
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 992px) {
+            .rules-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .rules-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .rules-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+    <title>Posting Rules - 2Nice Ride</title>
+</head>
+<body>
+    <div class="rules-container">
+        <div class="rules-header">
+            <h1>Essential Rules for Trip Posting</h1>
+        </div>
+
+        <div class="rules-grid">
+            <div class="rule-card">
+                <div class="rule-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="rule-title">Be Reliable</h3>
+                <p class="rule-description">Commit to your schedule and arrive on time. Your reliability builds trust within our community.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">
+                    <i class="fas fa-wallet"></i>
+                </div>
+                <h3 class="rule-title">Digital Payments Only</h3>
+                <p class="rule-description">All transactions are handled securely through our platform. No cash payments accepted.</p>
+            </div>
+
+            <div class="rule-card">
+                <div class="rule-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="rule-title">Drive Safely</h3>
+                <p class="rule-description">Follow traffic rules, maintain speed limits, and avoid using your phone while driving.</p>
+            </div>
+        </div>
+
+        <div class="rules-agreement">
+            <div class="agreement-checkbox">
+                <input type="checkbox" id="rules-accept">
+                <label for="rules-accept" class="agreement-text">I understand that my account could be suspended if I break these rules</label>
+            </div>
+            <button onclick="window.location.href='post-trip.html'" class="post-trip-btn">Post Your Trip</button>
+        </div>
+    </div>
+</body>
+</html>

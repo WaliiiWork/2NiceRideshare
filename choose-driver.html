@@ -1,0 +1,1246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Find Driver</title>
+    <style>
+        .search-input {
+            margin: 0.8rem 0;
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #f79f20;
+            outline: none;
+        }
+
+
+        .btn-custom {
+            background-color: #f79f20;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #030e4e;
+            color: #fff;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .drivers-card {
+            border: 3px dotted #f79f20;
+            border-radius: 10px;
+            width: 100%;
+            height: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #fff8f1;
+            transition: transform 0.3s;
+            margin-bottom: 20px;
+            padding: 15px 30px;
+        }
+
+        .drivers-card .box {
+            height: 100%;
+        }
+
+        .driver-box-1 {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .driver-profile-img {
+            overflow: hidden;
+            border: 2px solid #f79f20;
+            border-radius: 50%;
+            width: 100px;
+            height: 100px;
+        }
+
+        .driver-info h3 {
+            color: #f79f20;
+        }
+
+        .driver-info p {
+            color: #030e4e;
+            font-weight: 700;
+        }
+
+        .driver-profile-img img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .driver-rating {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .driver-name {
+            color: #f79f20;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .rating {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #000000;
+        }
+
+        .driver-box-2 {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .mixed {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+        }
+
+        .driver-box-2 h4 {
+            color: #000000;
+            font-size: 1rem;
+            font-weight: 800;
+        }
+
+        .date-and-time {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .leaving {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .leaving p {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .returning {
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+            align-items: center;
+        }
+
+        .returning p {
+            font-size: 1rem;
+            font-weight: 700;
+        }
+
+        .areas {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            gap: 5px 0;
+            align-items: flex-start;
+            flex-direction: column;
+        }
+
+        .areas .pickup {
+            color: #f79f20;
+            font-weight: 500;
+            gap: 10px;
+            /* margin-bottom: 10px; */
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .areas .pickup p {
+            font-size: 1rem;
+        }
+
+        .add-stops {
+            list-style-type: none;
+            width: 100%;
+            /* border: 2px solid #000; */
+        }
+
+        .add-stops p {
+            display: flex;
+            justify-content: flex-start;
+            gap: 5px;
+            align-items: center;
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .add-stops p i {
+            color: #f79f20;
+            /* margin-top: -30px; */
+            font-size: 0.4rem;
+        }
+
+        .areas .dropoff {
+            color: #f79f20;
+            font-weight: 500;
+            gap: 10px;
+            /* margin-top: 10px; */
+            width: 100%;
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+        .areas .dropoff p {
+            font-size: 1rem;
+            font-weight: 400;
+        }
+
+        .driver-box-3 {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .car-img {
+            width: 100%;
+            margin-bottom: 10px;
+            max-width: 200px;
+            width: 200px;
+        }
+
+        .car-img img {
+            width: 100%;
+        }
+
+        .driver-box-3 h3 {
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .car-features {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            /* margin-top: 10px; */
+        }
+
+        .car-features a {
+            font-size: 0.8rem;
+            color: #fff;
+            background-color: #f79f20;
+            border-radius: 50%;
+            padding: 5px 8px;
+            transition: background-color 0.3s;
+        }
+
+        .car-features a:hover {
+            background-color: #000000;
+        }
+
+        .driver-box-4 {
+            text-align: center;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        .driver-box-4 h4 {
+            color: #f79f20;
+            font-size: 2.1rem;
+            margin-bottom: 5px;
+        }
+
+        .driver-box-4 p {
+            color: #000000;
+            font-weight: 500;
+        }
+
+        .driver-box-4 button {
+            margin-top: 10px;
+            color: #fff;
+            background-color: #f79f20;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .driver-box-4 button:hover {
+            background-color: #000000;
+        }
+
+        @media (max-width: 1200px) {
+            .drivers-card {
+                padding: 10px 20px;
+            }
+
+            .driver-profile-img {
+                border-radius: 50%;
+                width: 80px;
+                height: 80px;
+            }
+
+            .driver-name {
+                font-size: 1rem;
+                margin: 0.3rem 0;
+            }
+
+            .rating {
+                font-size: 0.7rem;
+            }
+
+            .driver-box-2 h4 {
+                font-size: 1rem;
+            }
+
+            .leaving {
+                gap: 5px;
+            }
+
+            .leaving p {
+                font-size: 0.8rem;
+            }
+
+            .returning {
+                gap: 5px;
+            }
+
+            .returning p {
+                font-size: 0.8rem;
+                font-weight: 700;
+            }
+
+            .areas {
+                margin-top: 10px;
+                gap: 5px 0;
+            }
+
+            .areas .pickup {
+                gap: 5px;
+            }
+
+            .areas .pickup p {
+                font-size: 0.8rem;
+            }
+
+            .add-stops li {
+                font-weight: 500;
+            }
+
+            .add-stops li i {
+                font-size: 0.4rem;
+            }
+
+            .areas .dropoff {
+                font-size: 0.8rem;
+                gap: 5px;
+            }
+
+            .areas .dropoff p {
+                font-size: 0.8rem;
+            }
+
+            .car-img {
+                margin-bottom: 20px;
+                max-width: 150px;
+                width: 150px;
+            }
+
+            .driver-box-3 h3 {
+                font-size: 1rem;
+            }
+
+            .car-features {
+                margin-top: 10px;
+                gap: 10px;
+            }
+
+            .driver-box-4 button {
+                font-size: 12px;
+                padding: 5px 10px;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .drivers-card {
+                border-radius: 10px;
+                height: auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                margin-bottom: 20px;
+                padding: 15px 15px;
+            }
+
+            .driver-box-1 {
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            .driver-profile-img {
+                width: 60px;
+                height: 60px;
+            }
+
+            .mixed {
+                padding: 10px 0;
+                align-items: center;
+                width: 100%;
+                gap: 0;
+            }
+
+            .driver-box-2 {
+                width: 60%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .driver-box-2 h4 {
+                color: #000000;
+                font-size: 1rem;
+                font-weight: 800;
+            }
+
+            .date-and-time {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .leaving {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .leaving p {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            .returning {
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                gap: 10px;
+                align-items: center;
+            }
+
+            .returning p {
+                font-size: 1rem;
+                font-weight: 700;
+            }
+
+            .areas {
+                margin-top: 10px;
+                width: 100%;
+                display: flex;
+                justify-content: center;
+                gap: 5px 0;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .areas .pickup {
+                color: #f79f20;
+                font-weight: 500;
+                gap: 10px;
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .areas .pickup p {
+                font-size: 1rem;
+            }
+
+            .add-stops {
+                list-style-type: none;
+                width: 100%;
+            }
+
+            .add-stops li {
+                color: #000000;
+                font-weight: 500;
+            }
+
+            .add-stops li i {
+                color: #f79f20;
+                font-size: 0.4rem;
+            }
+
+            .areas .dropoff {
+                color: #f79f20;
+                font-weight: 500;
+                gap: 10px;
+                width: 100%;
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+            .areas .dropoff p {
+                font-size: 1rem;
+                font-weight: 400;
+            }
+
+            .driver-box-3 {
+                width: 40%;
+                text-align: center;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .car-img {
+                width: 98%;
+                max-width: 98%;
+                margin-bottom: 10px;
+            }
+
+            .car-img img {
+                width: 100%;
+            }
+
+            .driver-box-3 h3 {
+                color: #000000;
+                font-size: 1.2rem;
+                font-weight: 700;
+            }
+
+            .car-features {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .car-features a {
+                font-size: 0.8rem;
+                color: #fff;
+                background-color: #f79f20;
+                border-radius: 50%;
+                padding: 5px 8px;
+                transition: background-color 0.3s;
+            }
+
+            .car-features a:hover {
+                background-color: #000000;
+            }
+
+            .driver-box-4 {
+                text-align: center;
+                border-radius: 5px;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+            }
+
+            .driver-box-4 h4 {
+                color: #f79f20;
+                font-size: 1.5rem;
+                margin-bottom: 5px;
+            }
+
+            .driver-box-4 p {
+                color: #000000;
+                font-weight: 500;
+            }
+
+            .driver-box-4 button {
+                margin-top: 10px;
+                color: #fff;
+                background-color: #f79f20;
+                border: none;
+                padding: 10px 20px;
+                border-radius: 5px;
+            }
+        }
+
+        @media (max-width: 768px) {
+
+            .mixed {
+                padding: 10px 0;
+                display: flex;
+                align-items: center;
+                width: 100%;
+                gap: 0;
+            }
+
+            .driver-box-2 {
+                width: 60%;
+                display: flex;
+                justify-content: center;
+                align-items: flex-start;
+                flex-direction: column;
+            }
+
+            .driver-box-2 h4 {
+                font-size: 1rem;
+            }
+
+            .leaving {
+                gap: 5px;
+            }
+
+            .leaving p {
+                font-size: 0.7rem;
+            }
+
+            .returning {
+                gap: 5px;
+            }
+
+            .returning p {
+                font-size: 0.7rem;
+            }
+
+            .areas {
+                margin-top: 5px;
+            }
+
+            .areas .pickup {
+                gap: 5px;
+            }
+
+            .areas .pickup p {
+                font-size: 0.8rem;
+            }
+
+            .add-stops li {
+                font-size: 0.8rem;
+            }
+
+            .add-stops li i {
+                font-size: 0.4rem;
+            }
+
+            .areas .dropoff {
+                gap: 5px;
+            }
+
+            .areas .dropoff p {
+                font-size: 0.8rem;
+            }
+
+            .driver-box-3 h3 {
+                font-size: 1rem;
+            }
+
+            .car-features a {
+                font-size: 0.8rem;
+            }
+
+            .driver-box-4 h4 {
+                font-size: 1.2rem;
+            }
+
+            .driver-box-4 button {
+                font-size: 0.7rem;
+                padding: 8px 16px;
+            }
+        }
+
+        @media (max-width: 500px) {
+
+            .mixed {
+                padding: 20px 0;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: flex-start;
+            }
+
+            .driver-box-2 {
+                width: 100%;
+            }
+
+            .driver-box-2 h4 {
+                font-size: 6vw;
+            }
+
+            .leaving {
+                gap: 1vw;
+            }
+
+            .leaving p {
+                font-size: 3vw;
+            }
+
+            .returning {
+                gap: 5px;
+            }
+
+            .returning p {
+                font-size: 3vw;
+            }
+
+            .areas {
+                margin-top: 5px;
+            }
+
+            .areas .pickup {
+                gap: 5px;
+            }
+
+            .areas .pickup p {
+                font-size: 3vw;
+            }
+
+            .add-stops li {
+                margin: 0.8vw;
+                font-size: 3vw;
+            }
+
+            .add-stops li i {
+                font-size: 1.7vw;
+            }
+
+            .areas .dropoff {
+                margin-bottom: 3vw;
+                gap: 1vw;
+            }
+
+            .areas .dropoff p {
+                font-size: 3vw;
+            }
+
+            .driver-box-3 {
+                text-align: center;
+                width: 100%;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                flex-direction: row;
+            }
+
+            .car-img {
+                width: 50%;
+                margin-bottom: 0;
+                max-width: 50%;
+            }
+
+            .car-img img {
+                width: 100%;
+            }
+
+            .features {
+                width: 50%;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                flex-direction: column;
+            }
+
+            .driver-box-3 h3 {
+                font-size: 4vw;
+            }
+
+            .car-features a {
+                padding: 1vw 2vw;
+                font-size: 3vw;
+            }
+
+            .driver-box-4 h4 {
+                font-size: 6vw;
+            }
+
+            .driver-box-4 p {
+                font-size: 3vw;
+            }
+
+            .driver-box-4 button {
+                font-size: 3vw;
+                padding: 2vw 4vw;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="top-section">
+        <div class="container">
+            <div class="right">
+                <a href="tel:+1 431-334-2841"><i class="fa-solid fa-phone"></i> +1 431-334-2841</a>
+                <a class="ml-4" href="mailto:info@2niceride.com"><i class="fa-solid fa-envelope"></i>
+                    info@2niceride.com</a>
+            </div>
+            <div class="left">
+                <a
+                    href="https://www.facebook.com/people/2-Nice-Rideshare-Carpooling-Transport-Services-Inc/61565896294744/"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a class="login-btn" href="login.html">Login <i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #fff;">
+        <div class="container">
+            <!-- Logo on the left -->
+            <a class="navbar-brand" href="index.html">
+                <img src="Images/logo.png" width="150" height="120" alt="2Nice Ride Logo" loading="lazy">
+            </a>
+
+            <!-- Toggler button for smaller screens -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation links aligned to the right -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="choose.html">Post a Trip</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="Find-ride.html">Find a Ride</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="driver-section">
+        <div class="container">
+            <div class="search-container">
+                <div class="form-row align-items-center">
+                    <div class="col-sm-3">
+                        <input type="text" placeholder="From" class="form-control search-input">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="text" placeholder="To" class="form-control search-input">
+                    </div>
+                    <div class="col-sm-3">
+                        <input type="date" placeholder="Leaving (optional)" class="form-control search-input">
+                    </div>
+                    <div class="col-sm-3">
+                        <button class="btn btn-custom w-100 search-btn">Search</button>
+                    </div>
+                </div>
+            </div>
+            <div class="filter-options d-flex mt-3">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
+                    <label class="form-check-label" for="flexCheckDefault1">Hide Requests</label>
+                </div>
+                <div class="form-check ml-3">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
+                    <label class="form-check-label" for="flexCheckDefault2">Full Trips</label>
+                </div>
+            </div>
+            <div class="results-header w-100 mt-5 d-flex justify-content-between align-content-center">
+                <h5>Results 1 to 20 from Vancouver to Whistler</h5>
+                <p>52 results total</p>
+            </div>
+            <div class="drivers-info mt-5">
+                <h6>Thursday, November 14</h6>
+                <div class="drivers-container">
+                    <!-- Driver 1 -->
+                    <div class="drivers-card mt-3">
+                        <div class="driver-box-1 box">
+                            <div class="driver-profile-img">
+                                <img src="Images/driver.jpg" alt="">
+                            </div>
+                            <div class="driver-info mt-2">
+                                <h3>Sim</h3>
+                            </div>
+                        </div>
+                        <div class="mixed">
+                            <div class="driver-box-2 box">
+                                <h4>Calgary to Banff</h4>
+                                <div class="date-and-time">
+                                    <div class="leaving">
+                                        <p>Leaving: </p>
+                                        <p>Thursday, November 14 at 9:00am</p>
+                                    </div>
+                                    <div class="returning">
+                                        <p>Returning: </p>
+                                        <p>Thursday, November 14 at 11:00am</p>
+                                    </div>
+                                </div>
+                                <div class="areas">
+                                    <div class="pickup">
+                                        <p><i class="fa-solid fa-location-dot"></i> Pickup: </p>
+                                        <p>Calgary International Airport</p>
+                                    </div>
+                                    <div class="add-stops">
+                                        <p><i class="fa-solid fa-circle"></i> Quarry Lake</p>
+                                        <p><i class="fa-solid fa-circle"></i> Canmore Nordic Centre</p>
+                                        <p><i class="fa-solid fa-circle"></i> Local Restaurants</p>
+                                    </div>
+                                    <div class="dropoff">
+                                        <p><i class="fa-solid fa-location-dot"></i> Dropoff: </p>
+                                        <p>Banff, AB, Canada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="driver-box-3 box">
+                                <div class="car-img">
+                                    <img src="Images/driver-car.jpg" alt="">
+                                </div>
+                                <div class="features">
+                                    <h3>Toyota 833</h3>
+                                    <div class="car-features">
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Medium Luggage Ok"><i
+                                                class="fa-solid fa-suitcase"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Winter tiers"><i
+                                                class="fa-regular fa-snowflake"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Pets Ok"><i
+                                                class="fa-solid fa-paw"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="driver-box-4">
+                            <div>
+                                <h4>$18</h4>
+                                <p>1 Seat left</p>
+                            </div>
+                            <button onclick="window.location.href='more-drivers-info.html'">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="drivers-card mt-3">
+                        <div class="driver-box-1 box">
+                            <div class="driver-profile-img">
+                                <img src="Images/driver.jpg" alt="">
+                            </div>
+                            <div class="driver-info mt-2">
+                                <h3>Sim</h3>
+                            </div>
+                        </div>
+                        <div class="mixed">
+                            <div class="driver-box-2 box">
+                                <h4>Calgary to Banff</h4>
+                                <div class="date-and-time">
+                                    <div class="leaving">
+                                        <p>Leaving: </p>
+                                        <p>Thursday, November 14 at 9:00am</p>
+                                    </div>
+                                    <div class="returning">
+                                        <p>Returning: </p>
+                                        <p>Thursday, November 14 at 11:00am</p>
+                                    </div>
+                                </div>
+                                <div class="areas">
+                                    <div class="pickup">
+                                        <p><i class="fa-solid fa-location-dot"></i> Pickup: </p>
+                                        <p>Calgary International Airport</p>
+                                    </div>
+                                    <div class="add-stops">
+                                        <p><i class="fa-solid fa-circle"></i> Quarry Lake</p>
+                                        <p><i class="fa-solid fa-circle"></i> Canmore Nordic Centre</p>
+                                        <p><i class="fa-solid fa-circle"></i> Local Restaurants</p>
+                                    </div>
+                                    <div class="dropoff">
+                                        <p><i class="fa-solid fa-location-dot"></i> Dropoff: </p>
+                                        <p>Banff, AB, Canada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="driver-box-3 box">
+                                <div class="car-img">
+                                    <img src="Images/driver-car.jpg" alt="">
+                                </div>
+                                <div class="features">
+                                    <h3>Toyota 833</h3>
+                                    <div class="car-features">
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Medium Luggage Ok"><i
+                                                class="fa-solid fa-suitcase"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Winter tiers"><i
+                                                class="fa-regular fa-snowflake"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Pets Ok"><i
+                                                class="fa-solid fa-paw"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="driver-box-4">
+                            <div>
+                                <h4>$18</h4>
+                                <p>1 Seat left</p>
+                            </div>
+                            <button onclick="window.location.href='more-drivers-info.html'">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="drivers-card mt-3">
+                        <div class="driver-box-1 box">
+                            <div class="driver-profile-img">
+                                <img src="Images/driver.jpg" alt="">
+                            </div>
+                            <div class="driver-info mt-2">
+                                <h3>Sim</h3>
+                            </div>
+                        </div>
+                        <div class="mixed">
+                            <div class="driver-box-2 box">
+                                <h4>Calgary to Banff</h4>
+                                <div class="date-and-time">
+                                    <div class="leaving">
+                                        <p>Leaving: </p>
+                                        <p>Thursday, November 14 at 9:00am</p>
+                                    </div>
+                                    <div class="returning">
+                                        <p>Returning: </p>
+                                        <p>Thursday, November 14 at 11:00am</p>
+                                    </div>
+                                </div>
+                                <div class="areas">
+                                    <div class="pickup">
+                                        <p><i class="fa-solid fa-location-dot"></i> Pickup: </p>
+                                        <p>Calgary International Airport</p>
+                                    </div>
+                                    <div class="add-stops">
+                                        <p><i class="fa-solid fa-circle"></i> Quarry Lake</p>
+                                        <p><i class="fa-solid fa-circle"></i> Canmore Nordic Centre</p>
+                                        <p><i class="fa-solid fa-circle"></i> Local Restaurants</p>
+                                    </div>
+                                    <div class="dropoff">
+                                        <p><i class="fa-solid fa-location-dot"></i> Dropoff: </p>
+                                        <p>Banff, AB, Canada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="driver-box-3 box">
+                                <div class="car-img">
+                                    <img src="Images/driver-car.jpg" alt="">
+                                </div>
+                                <div class="features">
+                                    <h3>Toyota 833</h3>
+                                    <div class="car-features">
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Medium Luggage Ok"><i
+                                                class="fa-solid fa-suitcase"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Winter tiers"><i
+                                                class="fa-regular fa-snowflake"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Pets Ok"><i
+                                                class="fa-solid fa-paw"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="driver-box-4">
+                            <div>
+                                <h4>$18</h4>
+                                <p>1 Seat left</p>
+                            </div>
+                            <button onclick="window.location.href='more-drivers-info.html'">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="drivers-card mt-3">
+                        <div class="driver-box-1 box">
+                            <div class="driver-profile-img">
+                                <img src="Images/driver.jpg" alt="">
+                            </div>
+                            <div class="driver-info mt-2">
+                                <h3>Sim</h3>
+                            </div>
+                        </div>
+                        <div class="mixed">
+                            <div class="driver-box-2 box">
+                                <h4>Calgary to Banff</h4>
+                                <div class="date-and-time">
+                                    <div class="leaving">
+                                        <p>Leaving: </p>
+                                        <p>Thursday, November 14 at 9:00am</p>
+                                    </div>
+                                    <div class="returning">
+                                        <p>Returning: </p>
+                                        <p>Thursday, November 14 at 11:00am</p>
+                                    </div>
+                                </div>
+                                <div class="areas">
+                                    <div class="pickup">
+                                        <p><i class="fa-solid fa-location-dot"></i> Pickup: </p>
+                                        <p>Calgary International Airport</p>
+                                    </div>
+                                    <div class="add-stops">
+                                        <p><i class="fa-solid fa-circle"></i> Quarry Lake</p>
+                                        <p><i class="fa-solid fa-circle"></i> Canmore Nordic Centre</p>
+                                        <p><i class="fa-solid fa-circle"></i> Local Restaurants</p>
+                                    </div>
+                                    <div class="dropoff">
+                                        <p><i class="fa-solid fa-location-dot"></i> Dropoff: </p>
+                                        <p>Banff, AB, Canada</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="driver-box-3 box">
+                                <div class="car-img">
+                                    <img src="Images/driver-car.jpg" alt="">
+                                </div>
+                                <div class="features">
+                                    <h3>Toyota 833</h3>
+                                    <div class="car-features">
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Medium Luggage Ok"><i
+                                                class="fa-solid fa-suitcase"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Winter tiers"><i
+                                                class="fa-regular fa-snowflake"></i></a>
+                                        <a href="#" data-bs-toggle="tooltip" data-bs-title="Pets Ok"><i
+                                                class="fa-solid fa-paw"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="driver-box-4">
+                            <div>
+                                <h4>$18</h4>
+                                <p>1 Seat left</p>
+                            </div>
+                            <button onclick="window.location.href='more-drivers-info.html'">Book Now</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <div class="footer-logo">
+                        <img src="Images/logo.png" alt="2Nice Ride Logo">
+                    </div>
+                    <p class="company-desc">Experience unparalleled transportation solutions in Canada with 2-Nice
+                        Rideshare &
+                        Carpooling Transport Services Inc. We specialize in safe and efficient taxi services for both
+                        short and
+                        long-distance rides.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Post a trip</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Find a ride</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Chauffeur Service</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Airport Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hotel Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> City to City Ride</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Railway Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>635 St. James Street, Polo Park,<br>Winnipeg, MB R3G 3R4, Canada</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+14313342841">+1 431-334-2841</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@2niceride.com">info@2niceride.com</a>
+                        </li>
+                    </ul>
+                    <div class="app-downloads">
+                        <a href="#" class="app-btn">
+                            <img src="Images/android-icon.png" alt="Get it on Google Play">
+                        </a>
+                        <a href="#" class="app-btn">
+                            <img src="Images/iosapp-icon.png" alt="Download on App Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>© 2024 2-Nice Rideshare & Carpooling Transport Services Inc. All Rights Reserved.</p>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="#">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a href="#">User Agreement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

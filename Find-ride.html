@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+        integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+    <title>Find a ride</title>
+    <style>
+        .find-ride {
+            padding: 40px 20px;
+            margin: 30px 0;
+        }
+
+        .find-ride h1 {
+            font-size: 2.5rem;
+            color: #030e4e;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .find-ride p {
+            font-size: 1.2rem;
+            color: #6c757d;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .search-input {
+            padding: 10px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input:focus {
+            border-color: #f79f20;
+            outline: none;
+        }
+
+
+        .btn-custom {
+            background-color: #f79f20;
+            color: white;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .btn-custom:hover {
+            background-color: #d68a1a;
+        }
+
+        .carpool-sections {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .carpool-category {
+            width: 310px;
+            background-color: #ffffff;
+            border-radius: 20px;
+            padding: 20px;
+            margin: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .carpool-category h2 {
+            text-align: center;
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #000;
+            margin-bottom: 15px;
+            letter-spacing: 0.5px;
+        }
+
+        .carpool-category ul {
+            width: 100%;
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .carpool-category li {
+            border-radius: 10px;
+            text-decoration: none;
+            width: 100%;
+            background-color: #f79e2013;
+            padding: 10px;
+            font-size: 1rem;
+            margin-bottom: 10px;
+            transition: all 0.5s;
+        }
+
+        .carpool-category li:hover {
+            color: #fff;
+            transform: translateY(2px);
+            text-decoration: none;
+            background-color: #030e4e;
+        }
+
+        .carpool-category li:hover span {
+            color: #fff;
+        }
+
+        .carpool-category li:hover a {
+            color: #fff !important;
+        }
+
+        .carpool-category li a {
+            color: #030e4e;
+            text-decoration: none;
+            font-size: 0.8rem;
+            font-weight: 700;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .carpool-category span {
+            color: #f79f20;
+            font-weight: bold;
+        }
+
+
+        @media (max-width: 768px) {
+            .carpool-sections {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .carpool-category {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .find-ride h1 {
+                font-size: 2rem;
+            }
+
+            .find-ride p {
+                font-size: 1rem;
+            }
+
+            .search-input {
+                width: 100%;
+            }
+
+            .btn-custom {
+                width: 100%;
+            }
+        }
+
+
+        .map-container {
+            padding: 60px 20px;
+
+            width: 100%;
+        }
+
+        .map-container h1 {
+            text-align: center;
+            font-weight: 600;
+            color: #030e4e;
+            font-size: 2.5rem;
+
+            margin-bottom: 20px;
+
+        }
+
+        .map-container p {
+            text-align: center;
+            font-weight: 600;
+            color: #f79f20;
+            font-size: 1rem;
+
+            margin-bottom: 30px;
+
+        }
+
+        .map-container .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 500px;
+
+            flex-direction: column;
+
+        }
+
+        .map-container .container iframe {
+            box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+            border-radius: 20px;
+            width: 100%;
+
+            max-width: 800px;
+
+            height: 100%;
+
+        }
+
+        @media (max-width: 768px) {
+            .map-container h1 {
+                font-size: 2rem;
+
+            }
+
+            .map-container p {
+                font-size: 0.9rem;
+
+            }
+
+            .map-container .container {
+                height: 400px;
+
+            }
+        }
+
+        @media (max-width: 480px) {
+            .map-container h1 {
+                font-size: 1.5rem;
+
+            }
+
+            .map-container p {
+                font-size: 0.8rem;
+
+            }
+
+            .map-container .container {
+                height: 300px;
+
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <section class="top-section">
+        <div class="container">
+            <div class="right">
+                <a href="tel:+1 431-334-2841"><i class="fa-solid fa-phone"></i> +1 431-334-2841</a>
+                <a class="ml-4" href="mailto:info@2niceride.com"><i class="fa-solid fa-envelope"></i>
+                    info@2niceride.com</a>
+            </div>
+            <div class="left">
+                <a
+                    href="https://www.facebook.com/people/2-Nice-Rideshare-Carpooling-Transport-Services-Inc/61565896294744/"><i
+                        class="fa-brands fa-facebook"></i></a>
+                <a href=""><i class="fa-brands fa-linkedin"></i></a>
+                <a href=""><i class="fa-brands fa-instagram"></i></a>
+                <a class="login-btn" href="login.html">Login <i class="fa-regular fa-user"></i></a>
+            </div>
+        </div>
+    </section>
+
+
+    <nav class="navbar sticky-top navbar-expand-lg navbar-light" style="background-color: #fff;">
+        <div class="container">
+            <!-- Logo on the left -->
+            <a class="navbar-brand" href="index.html">
+                <img src="Images/logo.png" width="150" height="120" alt="2Nice Ride Logo" loading="lazy">
+            </a>
+
+            <!-- Toggler button for smaller screens -->
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <!-- Navigation links aligned to the right -->
+            <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="index.html">Home</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="about.html">About Us</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="choose.html">Post a Trip</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="Find-ride.html">Find a Ride</a>
+                    </li>
+                    <li class="nav-item mx-1">
+                        <a class="nav-link" href="contact.html">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <section class="find-ride">
+        <h1>Find a ride</h1>
+        <p>Enter your origin and destination and away you go!</p>
+        <div class="container bg-light p-3 rounded-4 rounded">
+            <div class="form-row align-items-center">
+                <div class="col-sm-3">
+                    <input type="text" placeholder="From" class="form-control search-input">
+                </div>
+                <div class="col-sm-3">
+                    <input type="text" placeholder="To" class="form-control search-input">
+                </div>
+                <div class="col-sm-3">
+                    <input type="date" placeholder="Leaving (optional)" class="form-control search-input">
+                </div>
+                <div class="col-sm-3">
+                    <button class="btn btn-custom w-100 search-btn">Search</button>
+                </div>
+            </div>
+        </div>
+        <div class="carpool-sections mt-5">
+            <div class="carpool-category">
+                <h2>Carpool in British Columbia</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul>
+                        <li><a href="choose-driver.html">Vancouver to Whistler <span>$15 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Vancouver to Squamish <span>$10 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Squamish to Whistler <span>$10 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Kelowna to Vancouver <span>$50 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Kelowna to Kamloops <span>$20 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Vancouver to Victoria <span>$15 per seat</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carpool-category">
+                <h2>Carpool in Alberta</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul>
+                        <li><a href="choose-driver.html">Calgary to Banff <span>$20 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Banff to Lake Louise <span>$10 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Canmore to Calgary <span>$15 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Calgary to Edmonton <span>$40 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Calgary to Saskatoon <span>$80 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Calgary to Vancouver <span>$100 per seat</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carpool-category">
+                <h2>Carpool in Ontario</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul>
+                        <li><a href="choose-driver.html">Toronto to Ottawa <span>$50 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Toronto to Montreal <span>$55 per seat</span></a></li>
+                        <li><a href="choose-driver.html">London to Toronto <span>$30 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Hamilton to Toronto <span>$10 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Kingston to Toronto <span>$35 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Kingston to Ottawa <span>$25 per seat</span></a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="carpool-category">
+                <h2>Carpool in Quebec</h2>
+                <div class="d-flex justify-content-between align-items-center">
+                    <ul>
+                        <li><a href="choose-driver.html">Quebec City to Montreal <span>$25 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Montreal to Ottawa <span>$25 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Montreal to Toronto <span>$55 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Montreal to Sherbrooke <span>$15 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Quebec City to Ottawa <span>$35 per seat</span></a></li>
+                        <li><a href="choose-driver.html">Montreal to Trois-Rivières <span>$15 per seat</span></a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="map-container">
+        <h1>See Avalable Rides</h1>
+        <p>In Your Area</p>
+        <div class="container">
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2570.8417347049867!2d-97.20153002322449!3d49.88299862805869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x52ea7377c0cf1191%3A0x43e0852cf6ff3ba7!2sPolo%20park!5e0!3m2!1sen!2s!4v1724345632512!5m2!1sen!2s"
+                width="100%" height="450" style="border: 0;" allowfdivlscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+    </section>
+
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <!-- Company Info -->
+                <div class="footer-company">
+                    <div class="footer-logo">
+                        <img src="Images/logo.png" alt="2Nice Ride Logo">
+                    </div>
+                    <p class="company-desc">Experience unparalleled transportation solutions in Canada with 2-Nice
+                        Rideshare &
+                        Carpooling Transport Services Inc. We specialize in safe and efficient taxi services for both
+                        short and
+                        long-distance rides.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-link"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Home</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> About Us</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Post a trip</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Find a ride</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Contact</a></li>
+                    </ul>
+                </div>
+
+                <!-- Services -->
+                <div class="footer-services">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Chauffeur Service</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Airport Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Hotel Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> City to City Ride</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Railway Transfer</a></li>
+                        <li><a href="#"><i class="fas fa-chevron-right"></i> Corporate Service</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-contact">
+                    <h3>Contact Info</h3>
+                    <ul>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span>635 St. James Street, Polo Park,<br>Winnipeg, MB R3G 3R4, Canada</span>
+                        </li>
+                        <li>
+                            <i class="fas fa-phone"></i>
+                            <a href="tel:+14313342841">+1 431-334-2841</a>
+                        </li>
+                        <li>
+                            <i class="fas fa-envelope"></i>
+                            <a href="mailto:info@2niceride.com">info@2niceride.com</a>
+                        </li>
+                    </ul>
+                    <div class="app-downloads">
+                        <a href="#" class="app-btn">
+                            <img src="Images/android-icon.png" alt="Get it on Google Play">
+                        </a>
+                        <a href="#" class="app-btn">
+                            <img src="Images/iosapp-icon.png" alt="Download on App Store">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <div class="copyright">
+                    <p>© 2024 2-Nice Rideshare & Carpooling Transport Services Inc. All Rights Reserved.</p>
+                </div>
+                <div class="footer-bottom-links">
+                    <a href="#">Privacy Policy</a>
+                    <span class="separator">|</span>
+                    <a href="#">Terms of Service</a>
+                    <span class="separator">|</span>
+                    <a href="#">User Agreement</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
